@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>RKCO Gas — First Order Promo</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #FFF8F0;
+    min-height: 100vh;
+    padding-bottom: 4rem;
+    color: #1C1C1E;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .hero {
+    background: linear-gradient(160deg, #C03A0E 0%, #E8501A 60%, #F06A30 100%);
+    padding: 1.5rem 1.25rem 3.75rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 44px;
+    background: #FFF8F0;
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 40px solid rgba(255,255,255,0.05);
+    top: -80px; right: -60px;
+    pointer-events: none;
+  }
+  .brand-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 4px 13px;
+    border-radius: 99px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+  .hero h1 em { font-style: normal; color: #FFD580; }
+  .hero-sub {
+    color: rgba(255,255,255,0.82);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    max-width: 300px;
+    margin-left: auto; margin-right: auto;
+  }
+  .promo-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+  }
+  .promo-badge {
+    background: #FFD580;
+    color: #6B2800;
+    font-size: 2rem;
+    font-weight: 900;
+    padding: 0.45rem 1.15rem;
+    border-radius: 14px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    animation: popIn 0.45s cubic-bezier(0.175,0.885,0.32,1.275) both;
+    white-space: nowrap;
+  }
+  .plus-sign { color: #FFD580; font-size: 1.5rem; font-weight: 900; }
+  .freebie-badge {
+    background: transparent;
+    border: 2.5px solid #FFD580;
+    color: #FFD580;
+    font-size: 0.88rem;
+    font-weight: 800;
+    padding: 0.45rem 1rem;
+    border-radius: 14px;
+    line-height: 1.25;
+    animation: popIn 0.48s 0.1s cubic-bezier(0.175,0.885,0.32,1.275) both;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  @keyframes popIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+  .promo-caption {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .trust-bar {
+    background: #1C1C1E;
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 0.7rem 1rem;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.73rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .form-card {
+    max-width: 480px;
+    margin: 1.25rem auto 0;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+    padding: 1.35rem 1.2rem 1.5rem;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+  }
+  @media (min-width: 520px) { .form-card { margin-left: auto; margin-right: auto; } }
+
+  .section-label {
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    color: #E8501A;
+    margin-bottom: 1rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1.5px solid #FFE8DF;
+  }
+
+  .field-group { margin-bottom: 0.75rem; }
+
+  label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 0.3rem;
+  }
+  label .req { color: #E8501A; margin-left: 2px; }
+  label .opt { color: #BBB; font-weight: 400; font-size: 0.71rem; margin-left: 4px; }
+  label .agent { color: #999; font-weight: 400; font-size: 0.71rem; margin-left: 4px; }
+
+  input[type="text"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 0 13px;
+    border: 1.5px solid #E5E5E5;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #1C1C1E;
+    background: #FAFAFA;
+    transition: border-color 0.15s;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-family: inherit;
+  }
+  input[type="text"], input[type="tel"], select { height: 48px; }
+  textarea {
+    height: 72px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    resize: vertical;
+    line-height: 1.4;
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    padding-right: 34px;
+    cursor: pointer;
+  }
+  input:focus, select:focus, textarea:focus { border-color: #E8501A; background: #fff; }
+  input:disabled { opacity: 0.4; cursor: not-allowed; background: #F0F0F0; }
+
+  .hint { font-size: 0.71rem; color: #999; margin-top: 0.3rem; line-height: 1.45; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 340px) { .two-col { grid-template-columns: 1fr; } }
+
+  .divider { height: 1px; background: #F2F2F2; margin: 1rem 0; }
+
+  .agent-section {
+    background: #F7F7F7;
+    border: 1.5px dashed #DDD;
+    border-radius: 12px;
+    padding: 0.9rem 0.9rem 0.6rem;
+    margin-top: 0.85rem;
+  }
+  .agent-section .section-label {
+    border-bottom: none;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0;
+  }
+  .agent-note {
+    font-size: 0.74rem;
+    color: #888;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+
+
+  .plus-code-field input {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+  }
+
+  .map-instruction {
+    background: #fff;
+    border: 1.5px solid #E5E5E5;
+    border-radius: 10px;
+    padding: 0.75rem 0.9rem 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .map-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin-bottom: 0.5rem;
+    font-size: 0.79rem;
+    color: #444;
+    line-height: 1.45;
+  }
+  .map-num {
+    flex-shrink: 0;
+    width: 20px; height: 20px;
+    background: #E8501A;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.68rem;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .share-icon {
+    display: inline-block;
+    background: #E8F4FE;
+    color: #1A73E8;
+    border-radius: 50%;
+    width: 18px; height: 18px;
+    font-size: 0.7rem;
+    text-align: center;
+    line-height: 18px;
+    vertical-align: middle;
+  }
+
+  /* ── STATUS BOX ── */
+  .status-box {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    display: none;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.45;
+  }
+  .status-box.info    { background: #FFF3CD; color: #856404; display: flex; }
+  .status-box.success { background: #D1F2E8; color: #0A5C38; display: flex; }
+  .status-box.error   { background: #FFE5E5; color: #8B0000; display: flex; }
+
+  /* ── SUBMIT ── */
+  .submit-btn {
+    width: 100%;
+    height: 50px;
+    background: #E8501A;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.15s, transform 0.1s;
+    margin-top: 0.85rem;
+    letter-spacing: 0.01em;
+    touch-action: manipulation;
+  }
+  .submit-btn:hover    { background: #C93E0F; }
+  .submit-btn:active   { transform: scale(0.98); }
+  .submit-btn:disabled { background: #CCC; cursor: not-allowed; }
+
+  .spinner {
+    width: 16px; height: 16px;
+    border: 2.5px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: inline-block; flex-shrink: 0;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── SUCCESS ── */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .big-check {
+    width: 72px; height: 72px;
+    background: #D1F2E8;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.1rem;
+    font-size: 32px;
+    animation: popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275) both;
+  }
+  .success-screen h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .success-screen p  { color: #666; font-size: 0.88rem; line-height: 1.6; }
+
+  .success-detail-box {
+    background: #F7F7F7;
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    margin: 1.1rem 0 0.5rem;
+    text-align: left;
+  }
+  .sdl { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #999; margin-bottom: 2px; margin-top: 0.6rem; }
+  .sdl:first-child { margin-top: 0; }
+  .sdv { font-size: 0.9rem; font-weight: 600; color: #1C1C1E; }
+  .sdv.code { font-family: 'Courier New', monospace; color: #E8501A; }
+
+  .promo-reminder {
+    margin-top: 1rem;
+    background: #FFF3E0;
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    font-size: 0.82rem;
+    color: #6B2800;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .footer-note {
+    text-align: center;
+    color: #C0C0C0;
+    font-size: 0.68rem;
+    margin-top: 2rem;
+    padding: 0 1rem;
+    line-height: 1.6;
+  }
+
+  .check-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0.55rem;
+    font-weight: 400;
+    font-size: 0.78rem;
+    color: #666;
+    cursor: pointer;
+  }
+  .check-row input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: #E8501A;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="brand-tag">RKCO Gas — New Customer Promo</div>
+  <h1>Safe gas.<br><em>On time, every time.</em></h1>
+  <p class="hero-sub">Trusted by your neighbors. Delivered to your door — and your first order comes with a little extra.</p>
+  <div class="promo-row">
+    <div class="promo-badge">₱50 OFF</div>
+    <div class="plus-sign">+</div>
+    <div class="freebie-badge">Mystery Freebie 🎁</div>
+  </div>
+  <p class="promo-caption">on your very first order</p>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">✅ Safe & Reliable</div>
+  <div class="trust-item">🚚 On-Time Delivery</div>
+  <div class="trust-item">🎁 Surprise Freebie</div>
+</div>
+
+<!-- FORM -->
+<div class="form-card" id="formCard">
+
+  <div class="section-label">About You</div>
+
+  <div class="field-group">
+    <label for="fullName">Full Name <span class="req">*</span></label>
+    <input type="text" id="fullName" placeholder="e.g. Maria Santos" autocomplete="name" inputmode="text" />
+  </div>
+
+  <div class="field-group">
+    <label for="businessName">Business Name <span class="req" id="bizReq">*</span></label>
+    <input type="text" id="businessName" placeholder="e.g. Santos Eatery" autocomplete="organization" />
+    <label class="check-row">
+      <input type="checkbox" id="individualToggle" onchange="toggleIndividual(this.checked)" />
+      I'm registering as an individual (no business name)
+    </label>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-label">Contact Numbers</div>
+
+  <div class="two-col">
+    <div class="field-group">
+      <label for="contact1">Contact 1 <span class="req">*</span></label>
+      <input type="tel" id="contact1" placeholder="09XX XXX XXXX" maxlength="13" inputmode="tel" />
+    </div>
+    <div class="field-group">
+      <label for="contact2">Contact 2 <span class="opt">(optional)</span></label>
+      <input type="tel" id="contact2" placeholder="09XX XXX XXXX" maxlength="13" inputmode="tel" />
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-label">Delivery Address</div>
+
+  <div class="field-group">
+    <label for="addressInput">Address <span class="req">*</span></label>
+    <textarea id="addressInput" placeholder="House/Unit No., Street, Barangay, City"></textarea>
+    <p class="hint">Write it the way you'd give directions to a rider — house number, street, barangay, landmark if helpful.</p>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-label">Current LPG Setup</div>
+  <p class="hint" style="margin-bottom:1rem;">Helps us prepare the right tank for your first order.</p>
+
+  <div class="two-col">
+    <div class="field-group">
+      <label for="currentSize">Cylinder Size <span class="req">*</span></label>
+      <select id="currentSize">
+        <option value="">— Select —</option>
+        <option value="2.7kg">2.7 kg</option>
+        <option value="11kg">11 kg</option>
+        <option value="22kg">22 kg</option>
+        <option value="50kg">50 kg</option>
+      </select>
+    </div>
+    <div class="field-group">
+      <label for="currentBrand">Current Brand <span class="req">*</span></label>
+      <select id="currentBrand" onchange="toggleOtherBrand(this.value)">
+        <option value="">— Select —</option>
+        <option>Solane</option>
+        <option>Gasul</option>
+        <option>Shine Gaz</option>
+        <option>Superkalan Gaz</option>
+        <option>Equi</option>
+        <option>S-Gas</option>
+        <option>Regasco</option>
+        <option>Fiesta</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field-group" id="otherBrandGroup" style="display:none;">
+    <label for="otherBrandName">Specify Brand <span class="req">*</span></label>
+    <input type="text" id="otherBrandName" placeholder="e.g. Petron Gasul, Phoenix…" />
+  </div>
+
+  <!-- AGENT-ONLY SECTION -->
+  <div class="agent-section">
+    <div class="section-label">For Rider / Agent Use</div>
+    <p class="agent-note">Customer filling this out? Leave it blank — our rider/agent fills this on-site.</p>
+
+    <div class="field-group">
+      <label for="plusCodeInput">Google Maps Location Link</label>
+      <input
+        type="text"
+        id="plusCodeInput"
+        placeholder="https://maps.app.goo.gl/..."
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+      />
+      <div class="map-instruction">
+        <div class="map-step"><span class="map-num">1</span><span>Open <strong>Google Maps</strong> and go to the exact delivery location</span></div>
+        <div class="map-step"><span class="map-num">2</span><span>Long-press the exact spot on the map until a pin drops</span></div>
+        <div class="map-step"><span class="map-num">3</span><span>Tap the bottom card that appears → tap the <strong>Share</strong> icon <span class="share-icon">&#x2BAA;</span></span></div>
+        <div class="map-step"><span class="map-num">4</span><span>Tap <strong>Copy link</strong> → paste it in the box above</span></div>
+        <p class="hint" style="margin-top:0.4rem;">The link looks like: <em>https://maps.app.goo.gl/xxxxx</em> — this is the most accurate method.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-box" id="statusBox"></div>
+
+  <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+    <span id="btnLabel">Claim My ₱50 Off + Freebie →</span>
+  </button>
+
+</div>
+
+<!-- SUCCESS -->
+<div class="success-screen" id="successScreen">
+  <div class="big-check">✓</div>
+  <h2>You're in! 🎉</h2>
+  <p>Your registration was received.<br>Our team will reach out to confirm your first order.</p>
+  <div class="success-detail-box" id="successDetail"></div>
+  <div class="promo-reminder">🎁 ₱50 off + a mystery freebie is waiting on your first order!</div>
+</div>
+
+<p class="footer-note">
+  By submitting, you agree to be contacted by RKCO Gas for your first order.<br>
+  Promo is for new customers only and subject to availability.
+</p>
+
+<script>
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzkpxPZCCr3ppDFtVllY7PmDRyHqqCYoyGK1Z-d08u1TtX6UnUxthvCYZIKZjlTKrql/exec';
+
+function toggleIndividual(checked) {
+  const input = document.getElementById('businessName');
+  const req   = document.getElementById('bizReq');
+  input.disabled = checked;
+  req.style.display = checked ? 'none' : 'inline';
+  if (checked) input.value = '';
+}
+
+function toggleOtherBrand(val) {
+  const grp = document.getElementById('otherBrandGroup');
+  grp.style.display = val === 'Other' ? 'block' : 'none';
+  if (val !== 'Other') document.getElementById('otherBrandName').value = '';
+}
+
+function showStatus(msg, type) {
+  const box = document.getElementById('statusBox');
+  const icons = { info: '⏳', error: '⚠️', success: '✓' };
+  box.innerHTML = `<span style="flex-shrink:0">${icons[type]||''}</span><span>${msg}</span>`;
+  box.className = `status-box ${type}`;
+}
+function hideStatus() {
+  document.getElementById('statusBox').className = 'status-box';
+}
+
+async function handleSubmit() {
+  hideStatus();
+
+  const fullName     = document.getElementById('fullName').value.trim();
+  const business     = document.getElementById('businessName').value.trim();
+  const c1           = document.getElementById('contact1').value.trim();
+  const c2           = document.getElementById('contact2').value.trim();
+  const size         = document.getElementById('currentSize').value;
+  const brand        = document.getElementById('currentBrand').value;
+  const otherBrand   = document.getElementById('otherBrandName').value.trim();
+  const finalBrand   = brand === 'Other' ? otherBrand : brand;
+  const address      = document.getElementById('addressInput').value.trim();
+  const plusCode     = document.getElementById('plusCodeInput').value.trim();
+
+  const isIndividual = document.getElementById('individualToggle').checked;
+
+  // Validation — no Plus Code requirement, agent/rider fills that in later
+  if (!fullName)                        { showStatus('Please enter your full name.', 'error'); return; }
+  if (!isIndividual && !business)       { showStatus('Please enter your business name, or tick the individual checkbox.', 'error'); return; }
+  if (!c1)                              { showStatus('Please enter at least one contact number.', 'error'); return; }
+  if (!size)                            { showStatus('Please select your cylinder size.', 'error'); return; }
+  if (!brand)                           { showStatus('Please select your current LPG brand.', 'error'); return; }
+  if (brand === 'Other' && !otherBrand) { showStatus('Please specify your LPG brand.', 'error'); return; }
+  if (!address)                         { showStatus('Please enter your delivery address.', 'error'); return; }
+
+  const btn = document.getElementById('submitBtn');
+  const lbl = document.getElementById('btnLabel');
+  btn.disabled = true;
+  lbl.innerHTML = '<span class="spinner"></span> Submitting…';
+  showStatus('Sending your registration…', 'info');
+
+  const payload = {
+    submittedAt:  new Date().toLocaleString('en-PH', { timeZone: 'Asia/Manila' }),
+    fullName:     fullName,
+    businessName: isIndividual ? '(Individual)' : business,
+    contact1:     c1,
+    contact2:     c2,
+    cylinderSize: size,
+    currentBrand: finalBrand,
+    address:      address,
+    plusCode:     plusCode || ''
+  };
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    document.getElementById('formCard').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
+    document.getElementById('successDetail').innerHTML = `
+      <div class="sdl">Full Name</div>
+      <div class="sdv">${fullName}</div>
+      <div class="sdl">Business</div>
+      <div class="sdv">${isIndividual ? 'Individual' : business}</div>
+      <div class="sdl">Contact</div>
+      <div class="sdv">${c1}${c2 ? ' / ' + c2 : ''}</div>
+      <div class="sdl">LPG Setup</div>
+      <div class="sdv">${size} — ${finalBrand}</div>
+      <div class="sdl">Address</div>
+      <div class="sdv">${address}</div>
+      ${plusCode ? `<div class="sdl">Plus Code</div><div class="sdv code">${plusCode}</div>` : ''}
+      ${!plusCode && !lat ? `<div class="sdl">Location</div><div class="sdv" style="color:#999;">To be confirmed by rider/agent</div>` : ''}
+    `;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  } catch (err) {
+    showStatus('Submission failed. Check your connection and try again.', 'error');
+    btn.disabled = false;
+    lbl.textContent = 'Claim My ₱50 Off + Freebie →';
+  }
+}
+</script>
+</body>
+</html>
